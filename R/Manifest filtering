@@ -1,0 +1,105 @@
+# workflow for manifestfiles filtering based on shared patient ID between mutect and RNA files
+
+manifestFile_mutect = "gdc_manifest.cancername_Mutect.txt"
+manifestFile_Rna = "gdc_manifest.cancername_RNA.txt"
+
+# Load library
+library(TCGAutils)
+
+manifestInfo_mutect <- read.table(manifestFile_mutect, sep="\t", header=TRUE)
+length(manifestInfo_mutect)
+manifestInfo_Rna=read.table(manifestFile_Rna, sep="\t", header=TRUE)
+
+# check with head you got everything
+head(manifestInfo_mutect)
+head(manifestInfo_Rna)
+
+### extract the patient Id for each manifest files ###
+# mutect
+mutect_pID = UUIDtoBarcode(manifestInfo_mutect$id, from_type = c("file_id")) # this puts all the patient ids for the files
+mutect_pID$patientID = substring(mutect_pID[,2], 1,12) # keep only the first part of patient ID
+
+# RNAseq
+Rna_pID = UUIDtoBarcode(manifestInfo_Rna$id, from_type = c("file_id")) 
+Rna_pID$patientID = substring(Rna_pID[,2], 1,12)
+
+### extract the shared patient ID between mutect and RNA ### 
+library("dplyr")
+shared_pID <- intersect(Rna_pID$patientID, mutect_pID$patientID) # patients ID that appear in both mutect and rna files
+length(shared_pID)
+
+#mutect
+filtered_mutect_pID <- mutect_pID[mutect_pID$patientID %in% shared_pID,]
+# mutect first filter the df of patient id and file_id
+filtered_mutect_pID <- filtered_mutect_pID %>% distinct(patientID, .keep_all = TRUE)
+#removes and duplicates
+nrow(filtered_mutect_pID) 
+#check this value is same as shared_pID length
+ 
+manifestInfo_mutect <- manifestInfo_mutect[manifestInfo_mutect$id %in% filtered_mutect_pID$file_id, ] 
+
+write.table(manifestInfo_mutect,file=filename, sep="\t", col.names=TRUE, row.names=FALSE, quote=FALSE)
+#write the filtered manifestfile
+
+# RNA manifest filtering
+filtered_Rna_pID <- Rna_pID[Rna_pID$patientID %in% shared_pID, ]
+filtered_Rna_pID <- filtered_Rna_pID %>% distinct(patientID, .keep_all =TRUE)
+
+manifestInfo_Rna <- manifestInfo_Rna[manifestInfo_Rna$id %in% filtered_Rna_pID$file_id, ]
+nrow(filtered_Rna_pID)
+
+write.table(manifestInfo_Rna,file=filename, sep="\t", col.names=TRUE, row.names=FALSE, quote=FALSE)
+
+nrow(fil)
+
+#######################################################
+# 2nd Rna-seq manifest filtering based on mutation list
+#######################################################
+library("dplyr")
+
+library(TCGAutils)
+
+mutation_list = "/path/to/file/"
+#mutation_list = "/cfs/klemming/projects/snic/snic2020-6-4/Meghana/MESO/mutations/MESO_mutation_list.txt"
+
+
+mutationlist <- read.table(mutation_list, sep="\t", header=TRUE)
+head(mutationlist)
+
+mutationList_pID =mutationlist$Samples
+mutationList_pID=strsplit(mutationList_pID,",")
+all_pID=unique(unlist(mutationList_pID))
+
+
+manifestFile_Rna= "/path/to/file/gdc_manifest/PRAD_RNA_manifest.txt"
+#manifestFile_Rna= "/cfs/klemming/projects/snic/snic2020-6-4/Meghana/READ/gdc-manifest/READ_RNA_manifest.txt"
+
+manifest_info_Rna = read.table(manifestFile_Rna, sep="\t", header=TRUE)
+manifest_info_Rna$patientID <- substring(UUIDtoBarcode(manifest_info_Rna$id, from_type = c("file_id"))[,2], 1, 12)
+head(manifest_info_Rna)
+# find the common patient ID #
+shared_pID=intersect(manifest_info_Rna$patientID,all_pID)
+
+# Find missing or extra patient IDs
+not_in_rna <- setdiff(all_pID, manifest_info_Rna$patientID)  # In mutation list but not in RNA
+not_in_mutation <- setdiff(manifest_info_Rna$patientID, all_pID)  # In RNA but not in mutation list
+
+# Check if there are any missing or extra IDs
+if (length(not_in_rna) == 0 && length(not_in_mutation) == 0) {
+  print("All patient IDs are shared. No missing or extra IDs.")
+} else {
+  print("There are missing or extra patient IDs:")
+  if (length(not_in_rna) > 0) {
+    print("Patient IDs in mutation list but not in RNA:")
+    print(not_in_rna)
+  }
+  if (length(not_in_mutation) > 0) {
+    print("Patient IDs in RNA but not in mutation list:")
+    print(not_in_mutation)
+  }
+}
+
+######## prepare the filtered RNA manifest file for download of raw RNA seq #########
+manifest_info_Rna <- manifest_info_Rna[manifest_info_Rna$patientID %in% shared_pID, ]
+
+write.table(manifest_info_Rna,file=filename, sep="\t", col.names=TRUE, row.names=FALSE, quote=FALSE)
