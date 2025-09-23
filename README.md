@@ -21,8 +21,6 @@ Before running MAX preparation needs to made so all the needed parameters and da
 
 4. Once the RNA bamfiles have completed downloading convert them to [fastq](./Preprocessing/Download). 
 
-5. Once RNA bam files are download convert them to fastq.
-
 6. Prepare parameter file which where the file paths are for input 
 
 7. Run MAX
