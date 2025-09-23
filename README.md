@@ -13,7 +13,7 @@ ________________________________________________________________________________
 
 Before running MAX preparation needs to made so all the needed parameters and data is correct for input.
 
-1. First the manifest files are obtained through Genomic Data Commons (GDC) data portal (https://portal.gdc.cancer.gov/analysis_page?app=CohortBuilder&tab=general) through this you can choose the project and cancer. Then [filter](./Preprocessing/Manifestfilersfiltering) so only the samples with both RNA data and mutect data are kept.
+1. First the manifest files are obtained through Genomic Data Commons (GDC) data portal (https://portal.gdc.cancer.gov/analysis_page?app=CohortBuilder&tab=general) through this you can choose the project and cancer. Then [filter](./Preprocessing/Manifest_files_filtering) so only the samples with both RNA data and mutect data are kept.
 
 2. Start the [download](./Preprocessing/Download) of RNA and Mutect files
 
