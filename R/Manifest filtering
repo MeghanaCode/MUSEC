@@ -60,23 +60,20 @@ library("dplyr")
 library(TCGAutils)
 
 mutation_list = "/path/to/file/"
-#mutation_list = "/cfs/klemming/projects/snic/snic2020-6-4/Meghana/MESO/mutations/MESO_mutation_list.txt"
-
 
 mutationlist <- read.table(mutation_list, sep="\t", header=TRUE)
 head(mutationlist)
 
 mutationList_pID =mutationlist$Samples
 mutationList_pID=strsplit(mutationList_pID,",")
-all_pID=unique(unlist(mutationList_pID))
+all_pID=unique(unlist(mutationList_pID)) # Extract all unique patient id
 
-
-manifestFile_Rna= "/path/to/file/gdc_manifest/PRAD_RNA_manifest.txt"
-#manifestFile_Rna= "/cfs/klemming/projects/snic/snic2020-6-4/Meghana/READ/gdc-manifest/READ_RNA_manifest.txt"
+manifestFile_Rna= "/path/to/file/gdc_manifest/cancername_RNA_manifest.txt"
 
 manifest_info_Rna = read.table(manifestFile_Rna, sep="\t", header=TRUE)
 manifest_info_Rna$patientID <- substring(UUIDtoBarcode(manifest_info_Rna$id, from_type = c("file_id"))[,2], 1, 12)
 head(manifest_info_Rna)
+
 # find the common patient ID #
 shared_pID=intersect(manifest_info_Rna$patientID,all_pID)
 
@@ -101,5 +98,4 @@ if (length(not_in_rna) == 0 && length(not_in_mutation) == 0) {
 
 ######## prepare the filtered RNA manifest file for download of raw RNA seq #########
 manifest_info_Rna <- manifest_info_Rna[manifest_info_Rna$patientID %in% shared_pID, ]
-
 write.table(manifest_info_Rna,file=filename, sep="\t", col.names=TRUE, row.names=FALSE, quote=FALSE)
