@@ -19,11 +19,13 @@ Before running MAX preparation needs to made so all the needed parameters and da
 
 3. Once mutect files are downloaded, prepare mutation list and fasta files through running the step 1-3 preprocessing Rscipts.
 
-4. Once RNA bam files are download convert them to fastq.
+4. Once the RNA bamfiles have completed downloading convert them to [fastq](./Preprocessing/Download). 
 
-5. Prepare parameter file which where the file paths are for input 
+5. Once RNA bam files are download convert them to fastq.
 
-6. Run MAX
+6. Prepare parameter file which where the file paths are for input 
+
+7. Run MAX
 
 
 
