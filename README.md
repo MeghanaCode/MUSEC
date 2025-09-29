@@ -16,18 +16,19 @@ ________________________________________________________________________________
 Before running MAX preparation needs to made so all the needed parameters and data is correct for input. 
 - Each step is detailed script is written in the respective folder/code.
 
-1. First the manifest files are obtained through Genomic Data Commons (GDC) data portal (https://portal.gdc.cancer.gov/analysis_page?app=CohortBuilder&tab=general) through this you can choose the project and cancer. Then [filter](./Preprocessing/Manifest_files_filtering) so only the samples with both RNA data and mutect data are kept.
-![Mutect_manifest](https://github.com/user-attachments/assets/34bc1ec1-6a93-4a0f-b677-c2d3a39b94c9)
+1. First the manifest files are obtained through Genomic Data Commons (GDC) data portal (https://portal.gdc.cancer.gov/analysis_page?app=CohortBuilder&tab=general) through this you can choose the project and cancer. How to do this in found in detail on [GDC_manifest](GDC_manifest.md)
 
-2. Start the [download](./Preprocessing/Download) of RNA and Mutect files. 
+2. Then [filter](./Preprocessing/Manifest_files_filtering) so only the samples with both RNA data and mutect data are kept.
 
-3. Once mutect files are downloaded, prepare mutation list and fasta files through running the [step 1-3 preprocessing](Preprocessing/MutationList) Rscipts.
+3. Start the [download](./Preprocessing/Download) of RNA and Mutect files. 
 
-4. Once the RNA bamfiles have completed downloading convert them to [fastq](./Preprocessing/Download). 
+4. Once mutect files are downloaded, prepare mutation list and fasta files through running the [step 1-3 preprocessing](Preprocessing/MutationList) Rscipts.
 
-5. Prepare parameter file which where the file paths are for input 
+5. Once the RNA bamfiles have completed downloading convert them to [fastq](./Preprocessing/Download). 
 
-6. Run MAX
+6. Prepare parameter file which where the file paths are for input 
+
+7. Run MAX
 
 
 
