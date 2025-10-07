@@ -1,0 +1,12 @@
+#####################################
+# Changes in MAX version 2.0.1
+#####################################
+
+(NOT YET UPDATE docker)
+
+- Use simx_pair instead of polyester to speed up the simulation of transcripts when building X matrix
+- Allow running multiple genes at once in MAX2
+- Allow passing kmer length in runMAX.sh and constructMutXmatrix.sh
+- Provide R/runMAX2_cohort.R which aims to do MAX2 separately for group of samples clustered by set of mutations. This will avoid the too large reference created by pool of mutations which can worsen the mapping performance of Rapmap
+- Fixed the fixed the issues of processing sMap names in R/mergeMutSingleSample.R and R/genCountSample.R
+
