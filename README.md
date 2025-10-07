@@ -31,4 +31,22 @@ Before running MAX preparation needs to made so all the needed parameters and da
 7. Run MAX
 
 
+## Batch wise running for large data sets
+_______________________________________________________________________________________________________________________________________________________
+
+* Cancer types with total sample data exceeding 1 - 1.5tb was split into batches as the MAX tool can not handlle larger data.
+
+* The pipeline for batch wise running is the same as main pipeline. however there is extra step after 1.
+
+1.2 split the manifest files into apporpriate number of batchs for example total sample of 5tb --> split to 5 batchs
+    here you can find template for batch wise split
+
+* After making the batches follow steps 2-7 of the main pipeline use the mainfest files for the specific batch.
+
+8. Stitch the all the Rdata of MAX into one file
+
+
+
+
+
 
