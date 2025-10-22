@@ -28,7 +28,7 @@ Before running MAX preparation needs to made so all the needed parameters and da
 
 6. Prepare parameter file which where the file paths are for input 
 
-7. Run MAX
+7. Run MAX, download the MAX-binary-2.0.1 for all the necessary files. 
 
 
 ## Batch wise running for large data sets
@@ -50,4 +50,4 @@ ________________________________________________________________________________
 _____________________________________________________________________________________________________________________________________________
 
 * MAX is better excuted in 4 parts
-* Run MAX scripts 1-4
+* Run MAX scripts 1-4 
