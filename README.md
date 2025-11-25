@@ -50,4 +50,36 @@ ________________________________________________________________________________
 _____________________________________________________________________________________________________________________________________________
 
 * MAX is better excuted in 4 parts
-* Run MAX scripts 1-4 
+* Run MAX scripts 1-4
+
+cd /nfs/NGS/Meghana/MAX-binary-2.0.1
+Configure MAX (only run configure.sh once)
+if [[ -f configure_pre.sh ]]; then
+    bash configure_pre2.sh
+else
+    echo "configure_pre.sh not found!"
+    exit 1
+fi
+
+- Add the paths to system
+export LD_LIBRARY_PATH=$PWD/lib:$LD_LIBRARY_PATH
+export PATH=$PWD/bin:$PATH
+echo "path is set"
+- Go to the parent directory (if needed)
+cd ..
+- Run MAX with the specified parameters
+
+MAX-binary-2.0.1/runMAX_step---- -param /path/to/param.sh
+
+* Parameter file is needed with the paremeters below
+
+mutlist=$PWD/mutation_list_MAX2.txt
+gtffile=$PWD/gtffile.gtf        #found after preprocessing mutation list
+fastafile=$PWD/ fastafile .fa    #found after preprocessing mutation list
+hgversion="hg19"
+CPUNUM=4
+INPUT=$PWD/RNAseq data/        #the rnaseq data of the cancer that was converted to fasta
+OUTPUT=$PWD
+useMAX2=1
+
+
