@@ -1,0 +1,19 @@
+# Set the working directory (assuming you're in the right directory)
+cd /path/to/MAX-binary-2.0.1
+
+# Configure MAX (only run configure.sh once)
+if [[ -f configure_pre.sh ]]; then
+    bash configure_pre.sh
+else
+    echo "configure_pre.sh not found!"
+    exit 1
+fi
+# Add the paths to system
+export LD_LIBRARY_PATH=$PWD/lib:$LD_LIBRARY_PATH
+export PATH=$PWD/bin:$PATH
+
+echo "path is set"
+# Go to the parent directory (if needed)
+cd ..
+# Run MAX with the specified parameters
+MAX-binary-2.0.1/runMAX_step---- -param /path/to/param.sh
