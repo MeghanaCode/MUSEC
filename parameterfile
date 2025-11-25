@@ -1,0 +1,8 @@
+mutlist=$PWD/mutation_list_MAX2.txt
+gtffile=$PWD/gtffile.gtf        #found after preprocessing mutation list
+fastafile=$PWD/ fastafile .fa    #found after preprocessing mutation list
+hgversion="hg19"
+CPUNUM=4
+INPUT=$PWD/RNAseq data/        #the rnaseq data of the cancer that was converted to fasta
+OUTPUT=$PWD
+useMAX2=1
