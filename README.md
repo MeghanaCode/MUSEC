@@ -50,8 +50,11 @@ ________________________________________________________________________________
 _____________________________________________________________________________________________________________________________________________
 
 * MAX is better excuted in 4 parts
-* Run MAX scripts 1-4 though with [RunningMAX](RunningMAX) script
-* Parameter file is needed with the paremeters below
+* Before running make a [parameterfile](parameterfile), adjust all paths to suite yours
+* Run MAX scripts 1-4 though with [RunningMAX](RunningMAX) script, change the step at the last line of code MAX-binary-2.0.1/runMAX_step
+ 
+
+
 
 
 
