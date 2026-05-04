@@ -1,9 +1,9 @@
 # MUSEC
 Quantification of mutant-allele expression at isoform level for multiple genes
 
-## What is MAX?
+## What is MAX2pan?
 ______________________________________________________________________________________________________________________________________________
-MAX is a novel method to quantify the Mutant-Allele eXpression (MAX) at isoform level from RNA-seq data. Devaloped by Wenjiang Deng. This method was futher optimised to qualtify the Mutant allele expression of multiple genes for multiple samples. 
+MAX is a novel method to quantify the Mutant-Allele eXpression (MAX) at isoform level from RNA-seq data. Devaloped by Wenjiang Deng. This method was futher optimised to qualtify the Mutant allele expression of multiple genes for multiple samples, this is the MAX2pan. 
 
 MAX requires two essential data components: the individual’s somatic mutation data and corresponding RNA-seq data. To quantify isoform-level expression of genes, both data types must be provided as input. Prior to running MAX, the mutation and RNA-seq data are preprocessed to ensure they are in the correct format for analysis. This preprocessing step prepares the data for accurate isoform-level quantification.
 
