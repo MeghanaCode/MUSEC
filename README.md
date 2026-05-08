@@ -1,9 +1,11 @@
 # MUSEC
-Quantification of mutant-allele expression at isoform level for multiple genes
+MUSEC (Mutant Isoform Explorer for Cancers) is a comprehensive resource of mutant and wild-type expression profiles across 23 cancer types from The Cancer Genome Atlas (TCGA). The web application of MUSEC for interactive exploration is accessible at https://www.meb.ki.se/shiny/truvu/MUSEC/.
+
+We developed MAX2pan, an enhanced implementation of MAX designed for scalable, multi-gene analysis, and applied the tool to quantify the mutant and wild-type isoform expression in MUSEC. This github page provides details of MAX2pan and how to use this tool.
 
 ## What is MAX2pan?
 ______________________________________________________________________________________________________________________________________________
-MAX is a novel method to quantify the Mutant-Allele eXpression (MAX) at isoform level from RNA-seq data. Devaloped by Wenjiang Deng. This method was futher optimised to qualtify the Mutant allele expression of multiple genes for multiple samples, this is the MAX2pan. 
+MAX is a method developed by Wenjiang Deng et al. to quantify the Mutant-Allele eXpression (MAX) at isoform level from RNA-seq data. MAX2pan was futher optimised from MAX to qualtify the Mutant allele expression of multiple genes for multiple samples. 
 
 MAX requires two essential data components: the individual’s somatic mutation data and corresponding RNA-seq data. To quantify isoform-level expression of genes, both data types must be provided as input. Prior to running MAX, the mutation and RNA-seq data are preprocessed to ensure they are in the correct format for analysis. This preprocessing step prepares the data for accurate isoform-level quantification.
 
