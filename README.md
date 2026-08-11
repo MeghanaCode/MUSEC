@@ -25,7 +25,7 @@ Before running MAX2pan preparation needs to made so all the needed parameters an
 
 3. Start the [download](./Preprocessing/Download) of RNA and Mutect files. 
 
-4. Once mutect files are downloaded, prepare mutation list and fasta files through running the [step 1-3 preprocessing](Preprocessing/MutationList) Rscipts.
+4. Once mutect files are downloaded, prepare mutation list and fasta files through running the [step 1-3 preprocessing](Preprocessing/MutationList) R scripts.
 
 5. Once the RNA bamfiles have completed downloading convert them to [fastq](./Preprocessing/Download). 
 
@@ -41,7 +41,7 @@ ________________________________________________________________________________
 
 * The pipeline for batch wise running is the same as main pipeline. however there is extra step after 1.
 
-1.2 split the manifest files into apporpriate number of batchs for example total sample of 5tb --> split to 5 batchs
+1.2 split the manifest files into apporpriate number of batches for example total sample of 5tb --> split to 5 batches
     here you can find template for batch wise split
 
 * After making the batches follow steps 2-7 of the main pipeline use the mainfest files for the specific batch.
